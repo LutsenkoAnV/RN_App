@@ -9,36 +9,33 @@ import {
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const PhotoList = ({ navigation, pictures }) => {
-
-  return (
-    <FlatList
-      keyExtractor={item => item.id}
-      data={pictures}
-      renderItem={({ item }) => (
-        <TouchableOpacity
-          onPress={() => navigation.navigate('FullPhotoScreen', {
-            photoURL: item.photoBig,
-          })}
-        >
-          <View>
-            <Image
-              style={styles.photo}
-              source={{
-                uri: item.photoSmall,
-              }}
-            />
-            <View style={styles.container}>
-              <Text style={styles.text}>
-                {item.user}
-              </Text>
-            </View>
+export const PhotoList = ({ navigation, pictures }) => (
+  <FlatList
+    keyExtractor={item => item.id}
+    data={pictures}
+    renderItem={({ item }) => (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('FullPhotoScreen', {
+          photoURL: item.photoBig,
+        })}
+      >
+        <View>
+          <Image
+            style={styles.photo}
+            source={{
+              uri: item.photoSmall,
+            }}
+          />
+          <View style={styles.container}>
+            <Text style={styles.text}>
+              {item.user}
+            </Text>
           </View>
-        </TouchableOpacity>
-      )}
-    />
-  );
-};
+        </View>
+      </TouchableOpacity>
+    )}
+  />
+);
 
 const styles = StyleSheet.create({
   container: {
